@@ -3,14 +3,14 @@ package model;
 import java.util.Objects;
 
 public abstract class Car {
-    private String serialNumber;
+    private int serialNumber;
 
     private Engine engine;
 
     protected Car() {
 
     }
-    protected Car(String serialNumber, Engine engine) {
+    protected Car(int serialNumber, Engine engine) {
         this.serialNumber = serialNumber;
         this.engine = engine;
     }
@@ -18,11 +18,11 @@ public abstract class Car {
         System.out.println("Car driving");
     }
 
-    public String getSerialNumber() {
+    public int getSerialNumber() {
         return serialNumber;
     }
 
-    public void setSerialNumber(String serialNumber) {
+    public void setSerialNumber(int serialNumber) {
         this.serialNumber = serialNumber;
     }
 
