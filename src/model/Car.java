@@ -1,29 +1,47 @@
 package model;
 
+import enums.Brand;
+
 import java.util.Objects;
 
 public abstract class Car {
-    private int serialNumber;
-
+    private Brand brand;
+    private String serialNumber;
     private Engine engine;
 
-    protected Car() {
-
+    public Car(Engine engine) {
+        this.engine = engine;
     }
-    protected Car(int serialNumber, Engine engine) {
+
+    public Car(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Car(Brand brand, Engine engine) {
+        this.brand = brand;
+        this.engine = engine;
+    }
+
+    public Car(Brand brand, String serialNumber, Engine engine) {
+        this.brand = brand;
         this.serialNumber = serialNumber;
         this.engine = engine;
     }
+
     public void drive() {
         System.out.println("Car driving");
     }
 
-    public int getSerialNumber() {
-        return serialNumber;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setSerialNumber(int serialNumber) {
-        this.serialNumber = serialNumber;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
     }
 
     public Engine getEngine() {
@@ -38,18 +56,19 @@ public abstract class Car {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(getSerialNumber(), car.getSerialNumber()) && Objects.equals(getEngine(), car.getEngine());
+        return car.getBrand().equals(getBrand()) && Objects.equals(getSerialNumber(), car.getSerialNumber()) && Objects.equals(getEngine(), car.getEngine());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSerialNumber(), getEngine());
+        return Objects.hash(getBrand(), getSerialNumber(), getEngine());
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                "serialNumber='" + serialNumber + '\'' +
+                "brand=" + brand +
+                ", serialNumber='" + serialNumber + '\'' +
                 ", engine=" + engine +
                 '}';
     }

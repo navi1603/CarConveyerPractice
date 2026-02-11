@@ -1,10 +1,16 @@
 package service;
 
-public class Conveyer {
-    private Producible producible;
+import model.Car;
+import model.Engine;
 
-    public Conveyer(Producible producible){
-        this.producible = producible;
+public class Conveyer {
+    private final Produce producable;
+
+    public Conveyer(Produce producable){
+        this.producable = producable;
     }
 
+    public Car createCar(String serialNumber, Engine engine){
+        return producable.create(serialNumber, engine) ;
+    }
 }

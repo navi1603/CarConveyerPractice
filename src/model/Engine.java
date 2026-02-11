@@ -2,11 +2,14 @@ package model;
 
 import enums.EngineType;
 
-public final class Engine {
+public class Engine {
     private EngineType engineType;
 
     public Engine(EngineType engineType) {
         this.engineType = engineType;
+    }
+    public void startEngine(){
+        System.out.println("Engine started");
     }
 
     public EngineType getEngineType() {

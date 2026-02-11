@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CarsRepository {
+public class CarsWarehouse {
     public static final List<Car> cars = new ArrayList<>();
 
     public static List<Car> getAllCars() {
@@ -23,14 +23,14 @@ public class CarsRepository {
     }
 
     public static Car getCarBySerialNumber(String serialNumber) {
+        Car findedCar = null;
         for (Car car : cars) {
-            if (car.getSerialNumber().equals(serialNumber)) {
-                return car;
-            } else {
-                throw new CarNotFoundException("Car with serial number " + serialNumber + " not found");
-            }
+            findedCar = (car.getSerialNumber().equals(serialNumber)) ? car : null;
         }
-        return null;
+        if (findedCar == null) {
+            throw new CarNotFoundException("Car with serial number " + serialNumber + " not found");
+        }
+        return findedCar;
     }
 }
 
